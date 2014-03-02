@@ -107,6 +107,7 @@ int main(int args, char *argv[]) {
 		return 1;
 	}
 	int totalReadBytes = 0;
+	//printf("TotalfileSize = %i\n", totalFileSize);
 	while(totalReadBytes < totalFileSize && (readBytes = read(server, buffer, BUFFERSIZE)) > 0){	
 		writeBytes = 0;
 		while(writeBytes < readBytes){
@@ -117,7 +118,9 @@ int main(int args, char *argv[]) {
 	}
 
 	//Enviando despedida
+	//printf("terminé de leer\n");
 	status = write(server, "Bye", 3);
+	//printf("Enviando Bye\n");
 	
 	//Recibiendo despedida
 	free(buffer);

@@ -168,14 +168,16 @@ int main(int args, char *argv[]) {
 			
 			//Recibiendo despedida
 			free(buffer);
+			//printf("Esperando despedida de cliente...\n");
 			buffer = (char *) calloc(4, sizeof(char));
 			status = read(client, buffer, 3);
-			
+			//printf("Ciente se ha despedido: %s\n", buffer);
+
 			//Mandando despedida
+			//printf("Despidiendome del cliente...\n");
 			status = write(client, BYE, strlen(BYE));
-			
-			//Cerrando conexion del cliente
-			printf("Closing client conection\n");
+			//termina el protocolo
+			printf("Closing server\n");
 		}
 		//Buffer size
 		close(client);
